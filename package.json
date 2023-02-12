@@ -2,20 +2,26 @@
   "name": "d-log-front",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
     "dev": "vite --config front/vite.config.ts",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "api": "pm2 start api/ecosystem.config.js"
   },
   "dependencies": {
     "@tanstack/react-query": "^4.24.4",
+    "@types/koa": "^2.13.5",
+    "add": "^2.0.6",
+    "koa": "^2.14.1",
     "notion-client": "^6.15.8",
     "notion-types": "^6.15.6",
     "notion-utils": "^6.15.8",
+    "pm2": "^5.2.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-notion-x": "^6.15.8"
+    "react-notion-x": "^6.15.8",
+    "react-router-dom": "^6.8.1"
   },
   "devDependencies": {
     "@types/react": "^18.0.27",
@@ -25,6 +31,7 @@
     "vite": "^4.1.0"
   },
   "workspaces": [
-    "front/*"
+    "front/*",
+    "api/*"
   ]
 }
