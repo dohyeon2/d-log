@@ -6,6 +6,6 @@
     "allowSyntheticDefaultImports": true
   },
   "include": [
-    "front/vite.config.ts"
+    "./vite.config.ts"
   ]
 }

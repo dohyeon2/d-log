@@ -4,8 +4,8 @@
   "version": "0.0.0",
   "type": "commonjs",
   "scripts": {
-    "dev": "vite --config front/vite.config.ts",
-    "build": "tsc && vite build --config front/vite.config.ts",
+    "dev": "vite",
+    "build": "tsc && vite build",
     "preview": "vite preview",
     "api": "pm2-runtime start api/ecosystem.config.js",
     "api:status": "pm2 status",
