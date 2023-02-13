@@ -1,0 +1,45 @@
+version: '3.4'
+
+services:
+  api:
+    container_name: dlog-api
+    build:
+      context: .
+      dockerfile: api.Dockerfile
+    restart: always
+    ports:
+      - 3010:3010
+    volumes:
+      - ./api:/app/api
+    env_file:
+      - ./api/.env
+  db:
+    container_name: dlog-db
+    image: mysql
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: always
+    secrets:
+      - mysql_root_password
+      - mysql_user_password
+    environment:
+      MYSQL_ROOT_PASSWORD_FILE: /run/secrets/mysql_root_password
+      MYSQL_PASSWORD_FILE: /run/secrets/mysql_user_password
+      MYSQL_DATABASE: dlog
+      MYSQL_USER: syate
+  adminer:
+    container_name: dlog-adminer
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+
+volumes:
+  db_data:  
+    driver: local
+
+secrets:
+  mysql_root_password:
+    file: ./secrets/mysql_root_password
+  mysql_user_password:
+    file: ./secrets/mysql_user_password
