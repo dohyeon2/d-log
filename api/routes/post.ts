@@ -4,7 +4,7 @@ import DB from "../service/db";
 const postRouter = new Router();
 
 postRouter.get("/posts", async (ctx) => {
-  const [result] = await DB.query("SELECT title, updated_at FROM post");
+  const [result] = await DB.query("SELECT id, title, updated_at FROM post");
   ctx.set("content-type", "application/json");
   ctx.body = result;
 });
